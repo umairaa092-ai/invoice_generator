@@ -13,6 +13,24 @@ npm run dev
 
 Vite prints the development address. On first use, Billora loads a **clearly labeled demo workspace** with fictional records. Choose **Start fresh** to remove sample records, then enter your details in Business settings. You can reload sample data from Backup & restore after confirming replacement.
 
+### Windows PowerShell
+
+If PowerShell blocks `npm.ps1`, use the Windows command wrapper:
+
+```powershell
+npm.cmd ci
+npm.cmd run dev
+```
+
+Recent npm versions require explicit permission for dependency installation scripts. This project approves the required `esbuild@0.25.12` installer in `package.json`. If npm reports a pending esbuild approval, run:
+
+```powershell
+npm.cmd install-scripts approve esbuild
+npm.cmd rebuild esbuild --foreground-scripts
+```
+
+Approval records the package and version; rebuilding then runs its installer. The `install-scripts` command is available in npm 12. Older npm versions use the checked-in dependencies normally.
+
 ## The fast invoice flow
 
 1. Select **New invoice**.
