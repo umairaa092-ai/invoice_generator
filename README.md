@@ -108,6 +108,8 @@ npm run preview
 
 The deployable output is **`dist/`**. Deploy that folder to any static host. There are no server-side functions, secrets, or required environment variables. The app uses internal page state rather than server routes, so it does not need an SPA route fallback.
 
+For Cloudflare Pages dashboard Direct Upload, download [downloads/Cellspray-Cloudflare-Pages.zip](downloads/Cellspray-Cloudflare-Pages.zip) and follow [the upload instructions](docs/seller/CLOUDFLARE-PAGES.md). Regenerate that ZIP with `npm run package:cloudflare`. It packages the production website with `index.html` at the archive root; the Etsy buyer ZIP serves a different delivery workflow. Cloudflare assigns the live URL when you deploy through your account.
+
 | Host             | Build command   | Output directory |
 | ---------------- | --------------- | ---------------- |
 | Cloudflare Pages | `npm run build` | `dist`           |

@@ -12,7 +12,8 @@
     "format": "prettier --write src tests *.ts *.json index.html README.md",
     "build:buyer": "node scripts/build-buyer.mjs",
     "package:etsy": "npm run build && node scripts/package-etsy.mjs",
-    "package:seller": "npm run build:buyer && node scripts/capture-listing.mjs && node scripts/package-seller.mjs"
+    "package:seller": "npm run build:buyer && node scripts/capture-listing.mjs && node scripts/package-seller.mjs",
+    "package:cloudflare": "npm run build && node scripts/package-cloudflare.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",

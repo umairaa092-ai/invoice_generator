@@ -1,5 +1,7 @@
 # Cellspray Etsy delivery files
 
+[Download the Cloudflare Pages upload ZIP](Cellspray-Cloudflare-Pages.zip) to publish the website for mobile/browser access. Cloudflare dashboard Direct Upload accepts this ZIP with `index.html` at its root. See [the hosting instructions](../docs/seller/CLOUDFLARE-PAGES.md). This is the website build; the buyer download and seller kit below have separate purposes.
+
 [Download the buyer product ZIP](Cellspray-Invoice-Payment-Tracker.zip).
 
 On GitHub, open the ZIP and select **Download raw file**. Upload that ZIP to your Etsy digital listing. Buyers extract it and double-click the HTML app; the included PDFs explain setup, branding, daily use, and backups.
