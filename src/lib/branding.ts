@@ -75,7 +75,7 @@ function readableInk(accent: RGB, backgrounds: RGB[], towards: RGB): RGB {
   return mix(accent, towards, high);
 }
 
-/** Brand tokens are scoped to customer identity; they never override Billora's UI palette. */
+/** Brand tokens are scoped to customer identity; they never override Cellspray's UI palette. */
 export function brandingColors(color?: string): {
   accent: string;
   lightInk: string;

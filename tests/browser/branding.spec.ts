@@ -132,7 +132,7 @@ async function restore(
   mode: "merge" | "replace",
 ) {
   await navigate(page, "Backup & restore");
-  await page.getByLabel("Select a Billora JSON backup").setInputFiles({
+  await page.getByLabel("Select a Cellspray JSON backup").setInputFiles({
     name: "branding-backup.json",
     mimeType: "application/json",
     buffer: Buffer.from(JSON.stringify(workspace)),
@@ -291,7 +291,7 @@ test("saved branding flows through inline-client invoices, payments, print, dark
     "Design for independent businesses",
   );
   await expect(editor.locator(".invoice-preview")).not.toContainText(
-    /billora/i,
+    /(billora|cellspray)/i,
   );
   await editor.getByLabel("Invoice number", { exact: true }).fill("BRAND-0001");
   await editor
@@ -358,7 +358,7 @@ test("saved branding flows through inline-client invoices, payments, print, dark
   await expect(
     document.getByRole("img", { name: "Orbit Studio logo", exact: true }),
   ).toBeVisible();
-  await expect(document).not.toContainText(/billora/i);
+  await expect(document).not.toContainText(/(billora|cellspray)/i);
   await page.emulateMedia({ media: "print" });
   await expect(
     document.getByRole("columnheader", { name: "Amount", exact: true }),
@@ -623,6 +623,6 @@ test("old workspaces remain editable, and an undecodable embedded logo falls bac
   ).toContainText("Your Business");
   await expect(
     page.getByRole("dialog").locator(".invoice-preview"),
-  ).not.toContainText(/billora/i);
+  ).not.toContainText(/(billora|cellspray)/i);
   expect(errors).toEqual([]);
 });

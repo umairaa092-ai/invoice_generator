@@ -33,7 +33,7 @@ import { InvoiceEditor } from "./pages/InvoiceEditor";
 import { PaymentEditor } from "./components/PaymentEditor";
 import { InvoicePreview } from "./components/InvoicePreview";
 import { Modal } from "./components/Modal";
-import { BilloraMark } from "./components/BilloraMark";
+import { CellsprayMark } from "./components/CellsprayMark";
 import { BusinessLogo } from "./components/BusinessLogo";
 const navigation = [
   { id: "dashboard" as Page, label: "Overview", icon: LayoutDashboard },
@@ -128,7 +128,7 @@ function Shell({
     setMobileOpen(false);
   }
   useEffect(() => {
-    document.title = `Billora · ${page === "dashboard" ? "Overview" : page[0].toUpperCase() + page.slice(1)}`;
+    document.title = "Cellspray — Invoice & Payment Tracker";
     window.scrollTo(0, 0);
   }, [page]);
   function toggleTheme() {
@@ -168,10 +168,10 @@ function Shell({
             navigate("dashboard");
           }}
         >
-          <BilloraMark className="brand-mark" />
+          <CellsprayMark className="brand-mark" />
           <span className="brand-name">
-            billora
-            <span className="brand-tagline">A little less busywork.</span>
+            Cellspray
+            <span className="brand-tagline">Business Tools</span>
           </span>
         </a>
         <button
@@ -261,12 +261,12 @@ function Shell({
               <strong>
                 {data.settings.businessName.trim() || "Your Business"}
               </strong>
-              <span>{demo ? "Demo workspace" : "Business workspace"}</span>
+              <span>Business workspace</span>
             </span>
             <ChevronDown size={15} />
           </button>
           <div className="sidebar-version">
-            BILLORA <span>Made for independent work.</span>
+            CELLSPRAY <span>Invoice & Payment Tracker</span>
           </div>
         </div>
       </aside>
@@ -282,7 +282,7 @@ function Shell({
             >
               <Menu size={21} />
             </button>
-            <span>Workspace</span>
+            <span>Invoice & Payment Tracker</span>
             <ChevronRight size={14} />
             <strong>
               {page === "dashboard"
@@ -355,7 +355,7 @@ function Shell({
           )}
           <footer className="app-footer">
             <span>Keep creating. We’ll keep the numbers in order.</span>
-            <span>Billora · Your independent workspace</span>
+            <span>Cellspray · Invoice & Payment Tracker</span>
           </footer>
         </main>
       </div>
@@ -373,6 +373,23 @@ function PrintInvoice({
   onClose: () => void;
 }) {
   const { data } = useWorkspace();
+  useEffect(() => {
+    const appTitle = "Cellspray — Invoice & Payment Tracker";
+    const invoiceTitle = `${invoice.invoiceNumber} — ${data.settings.businessName.trim() || "Your Business"}`;
+    const beforePrint = () => {
+      document.title = invoiceTitle;
+    };
+    const afterPrint = () => {
+      document.title = appTitle;
+    };
+    window.addEventListener("beforeprint", beforePrint);
+    window.addEventListener("afterprint", afterPrint);
+    return () => {
+      window.removeEventListener("beforeprint", beforePrint);
+      window.removeEventListener("afterprint", afterPrint);
+      if (document.title === invoiceTitle) document.title = appTitle;
+    };
+  }, [invoice.invoiceNumber, data.settings.businessName]);
   return (
     <Modal
       title={`Invoice ${invoice.invoiceNumber}`}

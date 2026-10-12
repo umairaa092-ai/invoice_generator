@@ -148,7 +148,7 @@ test("complete invoice, payments, merge, appearance, mobile and cascade lifecycl
     .getByRole("button", { name: "Save changes", exact: true })
     .click();
   await manage(page, "Backup & restore");
-  await page.getByLabel("Select a Billora JSON backup").setInputFiles({
+  await page.getByLabel("Select a Cellspray JSON backup").setInputFiles({
     name: "test-backup.json",
     mimeType: "application/json",
     buffer: backup,
@@ -305,7 +305,7 @@ test("validation, currency isolation, safe drafts, printing and malformed backup
     .click();
   await manage(page, "Backup & restore");
   const before = await records(page);
-  await page.getByLabel("Select a Billora JSON backup").setInputFiles({
+  await page.getByLabel("Select a Cellspray JSON backup").setInputFiles({
     name: "broken.json",
     mimeType: "application/json",
     buffer: Buffer.from("{bad json"),
@@ -314,7 +314,7 @@ test("validation, currency isolation, safe drafts, printing and malformed backup
     /valid JSON|could not|malformed/i,
   );
   expect(await records(page)).toEqual(before);
-  await page.getByLabel("Select a Billora JSON backup").setInputFiles({
+  await page.getByLabel("Select a Cellspray JSON backup").setInputFiles({
     name: "empty.json",
     mimeType: "application/json",
     buffer: Buffer.from(JSON.stringify(emptyWorkspace())),
@@ -353,7 +353,7 @@ test("unreadable and disabled storage preserve a usable recovery screen", async 
     await page.evaluate(() => localStorage.getItem("billora.workspace.v1")),
   ).toBe("{broken");
   await manage(page, "Backup & restore");
-  await page.getByLabel("Select a Billora JSON backup").setInputFiles({
+  await page.getByLabel("Select a Cellspray JSON backup").setInputFiles({
     name: "valid.json",
     mimeType: "application/json",
     buffer: Buffer.from(JSON.stringify(demoWorkspace())),

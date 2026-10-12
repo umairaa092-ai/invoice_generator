@@ -297,7 +297,7 @@ export default function Settings() {
           <div className="settings-note-divider" />
           <h3>Your data stays with you</h3>
           <p>
-            Billora saves everything in this browser. Download a backup
+            Cellspray saves everything in this browser. Download a backup
             regularly and before switching devices.
           </p>
         </aside>

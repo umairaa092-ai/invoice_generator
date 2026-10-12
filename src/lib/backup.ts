@@ -8,7 +8,7 @@ export function parseBackup(text: string): Workspace {
     value = JSON.parse(text);
   } catch {
     throw new ValidationError(
-      "This file is not valid JSON. Choose a Billora JSON backup.",
+      "This file is not valid JSON. Choose a Cellspray JSON backup.",
     );
   }
   validateWorkspace(value);

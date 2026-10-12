@@ -66,7 +66,7 @@ export default function Backup() {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = `billora-backup-${today()}.json`;
+    link.download = `cellspray-invoice-payment-tracker-backup-${today()}.json`;
     document.body.appendChild(link);
     link.click();
     link.remove();
@@ -80,7 +80,7 @@ export default function Backup() {
     if (!file) return;
     if (file.size > 10 * 1024 * 1024)
       return toast(
-        "This file is too large. Choose a Billora JSON backup under 10 MB.",
+        "This file is too large. Choose a Cellspray JSON backup under 10 MB.",
         "error",
       );
     setReading(true);
@@ -233,7 +233,7 @@ export default function Backup() {
           </span>
           <h2>Bring your records back</h2>
           <p>
-            Choose a Billora backup to review. Your data stays as it is until
+            Choose a Cellspray backup to review. Your data stays as it is until
             you confirm a restore.
           </p>
           <input
@@ -241,7 +241,7 @@ export default function Backup() {
             type="file"
             accept=".json,application/json"
             hidden
-            aria-label="Select a Billora JSON backup"
+            aria-label="Select a Cellspray JSON backup"
             onChange={selectFile}
           />
           <button
@@ -375,7 +375,7 @@ export default function Backup() {
           <span className="backup-icon">
             <Sparkles size={22} />
           </span>
-          <h2>Take Billora for a spin</h2>
+          <h2>Take Cellspray for a spin</h2>
           <p>
             Explore a sample workspace with clients, invoices, and payments.
             You’ll review a confirmation before any records change.
@@ -389,7 +389,7 @@ export default function Backup() {
       <div className="local-data-notice">
         <ShieldCheck size={18} />
         <p>
-          Billora stores data in this browser on this device. Clearing browser
+          Cellspray stores data in this browser on this device. Clearing browser
           data removes your records. Keep an exported backup before clearing
           storage or moving to a different device.
         </p>

@@ -22,6 +22,7 @@ import {
 } from "../lib/calculations";
 import type { Currency } from "../lib/types";
 import { Badge } from "../components/Badge";
+import { businessInitials } from "../lib/branding";
 export default function Dashboard({ currency }: { currency: Currency }) {
   const { data, setPage, openPayment, openInvoice } = useWorkspace();
   const invoices = data.invoices.filter((i) => i.currency === currency),
@@ -190,7 +191,9 @@ export default function Dashboard({ currency }: { currency: Currency }) {
             </div>
           </div>
           <div className="graphic-invoice">
-            <span className="graphic-logo">b.</span>
+            <span className="graphic-logo">
+              {businessInitials(data.settings.businessName)}
+            </span>
             <span className="graphic-invoice-label">INVOICE</span>
             <div className="graphic-line long" />
             <div className="graphic-line" />

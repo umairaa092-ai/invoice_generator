@@ -224,7 +224,8 @@ export function WorkspaceProvider({
                 link.href = URL.createObjectURL(
                   new Blob([raw], { type: "application/json" }),
                 );
-                link.download = "billora-recovery.json";
+                link.download =
+                  "cellspray-invoice-payment-tracker-recovery.json";
                 link.click();
                 setTimeout(() => URL.revokeObjectURL(link.href), 1000);
               } catch {

@@ -191,7 +191,7 @@ export default function Payments() {
           <div className="panel-footer">
             <CreditCard size={15} />
             <span>
-              Payments are recorded manually. Billora does not process or
+              Payments are recorded manually. Cellspray does not process or
               transfer money.
             </span>
           </div>

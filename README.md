@@ -1,6 +1,8 @@
-# Billora
+# Cellspray — Invoice & Payment Tracker
 
-A browser-based invoice and payment workspace for independent businesses. Built with React, TypeScript, and Vite. No account, server, database, payment processor, or subscription is required.
+A Cellspray business tool for independent businesses: a browser-based invoice and payment workspace. Built with React, TypeScript, and Vite. No account, server, database, payment processor, or subscription is required.
+
+Cellspray is the software and Etsy shop brand; **Invoice & Payment Tracker** is the product. Your uploaded logo, business name, and contact details identify the invoice issuer. Software branding never replaces your business identity on invoices. During printing, the document title uses your business and invoice number so the suggested PDF filename and browser title header identify the customer invoice.
 
 ## Run locally
 
@@ -11,7 +13,7 @@ npm ci
 npm run dev
 ```
 
-Vite prints the development address. On first use, Billora loads a **clearly labeled demo workspace** with fictional records. Choose **Start fresh** to remove sample records, then enter your details in Business settings. You can reload sample data from Backup & restore after confirming replacement.
+Vite prints the development address. On first use, Cellspray loads a **clearly labeled demo workspace** with fictional records. Choose **Start fresh** to remove sample records, then enter your details in Business settings. You can reload sample data from Backup & restore after confirming replacement.
 
 ### Windows PowerShell
 
@@ -43,7 +45,7 @@ Use the invoice table to edit, duplicate, print, record later payments, or delet
 
 ## Business branding
 
-In **Business settings → Business Branding**, choose or drag in your business logo, enter your business name and optional tagline, and choose an invoice accent. Six presets and a custom six-digit hex color are available. Select **Save settings** once to apply branding to the workspace identity, live invoice previews, and printed invoices. Billora keeps its own app mark and interface colors; customer invoices contain only your business identity.
+In **Business settings → Business Branding**, choose or drag in your business logo, enter your business name and optional tagline, and choose an invoice accent. Six presets and a custom six-digit hex color are available. Select **Save settings** once to apply branding to the workspace identity, live invoice previews, and printed invoices. Cellspray keeps its own app mark and interface colors; customer invoices contain only your business identity.
 
 PNG, JPEG, and WEBP uploads are limited to 2 MiB. The browser validates the actual image format and dimensions, decodes it, and creates a compressed static PNG fitting within **600 × 300 pixels** without upscaling or stretching. Transparency is preserved. Only this processed data URL is saved, with a 1 MiB text limit; the source image is discarded. Extremely large dimensions (over 40 megapixels or 16,384 pixels on either side) are rejected before decoding to protect browser memory. All processing happens on your device.
 
@@ -66,7 +68,7 @@ The optional settings fields are `businessLogo`, `businessTagline`, and `invoice
 
 Everything stays in `localStorage` in **this browser, on this device, for this site's origin**. Theme choice is included in your workspace. Reloading keeps your records; clearing browser data, changing domains, or using another browser does not. No app data is sent to an external service. Browser storage is not a substitute for regular backups.
 
-The workspace uses the `billora.workspace.v1` key and a versioned JSON schema. Generated financial totals are calculated rather than stored. Writes validate the whole workspace before replacing it. If storage is full or inaccessible, a save reports an error and the current displayed workspace stays intact. A change from another tab blocks stale saves and asks you to reload.
+The workspace retains the legacy `billora.workspace.v1` key and versioned JSON schema. Internal storage keys are intentionally unchanged so existing saved data, demo markers, recovery copies, and undo snapshots continue to load after the software rebrand. Generated financial totals are calculated rather than stored. Writes validate the whole workspace before replacing it. If storage is full or inaccessible, a save reports an error and the current displayed workspace stays intact. A change from another tab blocks stale saves and asks you to reload.
 
 **Backup & restore** lets you download a JSON backup and inspect an uploaded file before changing any data:
 

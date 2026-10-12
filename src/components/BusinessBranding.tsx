@@ -271,7 +271,7 @@ export function BusinessBranding({
         </div>
         <p className="branding-hint">
           Your color adds a subtle accent. Invoice text adjusts for readable
-          contrast; Billora’s app colors stay consistent.
+          contrast; Cellspray’s app colors stay consistent.
         </p>
       </fieldset>
       <div className="branding-reset">
