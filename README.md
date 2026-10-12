@@ -4,7 +4,28 @@ A Cellspray business tool for independent businesses: a browser-based invoice an
 
 Cellspray is the software and Etsy shop brand; **Invoice & Payment Tracker** is the product. Your uploaded logo, business name, and contact details identify the invoice issuer. Software branding never replaces your business identity on invoices. During printing, the document title uses your business and invoice number so the suggested PDF filename and browser title header identify the customer invoice.
 
-## Run locally
+## Etsy digital download
+
+The buyer-ready product is [downloads/Cellspray-Invoice-Payment-Tracker.zip](downloads/Cellspray-Invoice-Payment-Tracker.zip). Buyers extract the ZIP and open **Cellspray-Invoice-Payment-Tracker.html** in desktop Chrome or Edge. No Node.js, server, account, or terminal is needed. The app's scripts, styles, and icons are embedded, and it uses system fonts. The delivered application makes no external requests.
+
+The ZIP includes the standalone app, **START-HERE.pdf**, **USER-GUIDE.pdf**, **USAGE-TERMS.txt**, and **THIRD-PARTY-NOTICES.txt**. Usage covers the buyer's own personal and business needs, including multiple businesses they own or operate, with no per-business restriction. Redistribution and resale of Cellspray's original application and guides are excluded; bundled open-source components retain their own licenses.
+
+This is downloadable software with browser-local records. Describe it as a local browser app in the listing. Local-file storage differs between browsers and file locations: buyers should use the same normal browser profile and keep the HTML filename and folder stable. A JSON backup is required to transfer records between locations, devices, or browsers. Copying the app itself does not copy saved business records.
+
+Seller listing copy and tags are in [docs/seller/ETSY-LISTING-DRAFT.md](docs/seller/ETSY-LISTING-DRAFT.md). Upload the product ZIP as an instant digital download; add your listing images, price, and shop policies in Etsy before publishing. The repository's source ZIP and `dist/` folder are developer/deployment files rather than the buyer download.
+
+[downloads/Cellspray-Etsy-Seller-Kit.zip](downloads/Cellspray-Etsy-Seller-Kit.zip) contains three 2000 × 1500 PNG listing images, title/description/tags, and a seller upload checklist. These are seller assets; the buyer product is the separate Invoice & Payment Tracker ZIP. Run `npm run package:seller` to regenerate them; see [the image guide](docs/seller/LISTING-IMAGES.md).
+
+To regenerate the product after a source change:
+
+```sh
+npm ci
+npm run package:etsy
+```
+
+The packaging command checks and builds the app, embeds the same React application in one HTML file, prints the buyer guides to PDF, and packages only the five buyer files. It writes the ZIP to `downloads/` and an ignored working copy in `release/`. PDF generation uses an installed Chrome/Edge/Chromium browser; set `CHROMIUM_PATH` if necessary, or install Playwright's browser with `npx playwright install chromium`. This browser requirement is for packaging only. On Windows, use `npm.cmd` for these developer commands.
+
+## Developer setup
 
 Use Node.js 22 or newer (the cloud environment uses Node 24).
 
@@ -104,11 +125,13 @@ npm run test:e2e
 
 Unit tests cover monetary rounding, tax/discount calculations, statuses, the payment lifecycle, currency isolation, numbering, backup validation, safe merges, and storage errors.
 
-Browser tests exercise inline client creation and deposits, later partial/final payments, deletion rollback, backup download/merge/undo, newer-record preservation, dark mode persistence, mobile layout, print visibility, linked-record deletions, invalid input, malformed backups, and storage recovery.
+Browser tests exercise inline client creation and deposits, later partial/final payments, deletion rollback, backup download/merge/undo, newer-record preservation, dark mode persistence, mobile layout, print visibility, linked-record deletions, invalid input, malformed backups, and storage recovery. `test:e2e` first builds the standalone buyer app; delivery tests also open that HTML directly using `file://` with the browser offline. Set `CELLSPRAY_BUYER_APP` to test the HTML extracted from a particular product ZIP.
 
 Branding tests also cover real raster uploads and transparency, processing errors, resizing, removal/reset, legacy storage compatibility, contrast, logo persistence, invoice/sidebar/print identity, and branding behavior across all restore modes.
 
 The cloud test configuration uses `/usr/bin/chromium`. Elsewhere, set `CHROMIUM_PATH` to your installed Chromium/Chrome binary. Playwright starts Vite automatically, or reuses a development server already running on port 5173. Unit tests do not require a browser.
+
+For local-file delivery tests, use a browser that permits opening local HTML. The managed cloud Chromium blocks `file://` navigation. `bash scripts/install-test-browser.sh` obtains an official Google Chrome stable package on Linux x86-64, verifies the vendor signature and index/package checksums, and extracts it under `/tmp` without installing OS packages or changing policies. Set `CHROMIUM_PATH` to the path in `/tmp/cellspray-test-browser/executable-path.txt` for isolated developer tests. Delivery checks observed no external requests and verified saved data after a browser-profile restart. Automated checks used Linux Chrome; test Windows/macOS and native print dialogs on your target devices before publishing the listing.
 
 ```sh
 CHROMIUM_PATH=/path/to/chrome npm run test:e2e

@@ -4,3 +4,4 @@ dist/
 *.local
 playwright-results/
 *.tsbuildinfo
+release/

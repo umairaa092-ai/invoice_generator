@@ -8,8 +8,11 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview --host 0.0.0.0",
     "test": "vitest run",
-    "test:e2e": "playwright test",
-    "format": "prettier --write src tests *.ts *.json index.html README.md"
+    "test:e2e": "npm run build:buyer && playwright test",
+    "format": "prettier --write src tests *.ts *.json index.html README.md",
+    "build:buyer": "node scripts/build-buyer.mjs",
+    "package:etsy": "npm run build && node scripts/package-etsy.mjs",
+    "package:seller": "npm run build:buyer && node scripts/capture-listing.mjs && node scripts/package-seller.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",
@@ -21,6 +24,7 @@
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
     "@vitejs/plugin-react": "^4.4.0",
+    "esbuild": "0.25.12",
     "prettier": "^3.9.10",
     "typescript": "~5.8.3",
     "vite": "^6.3.0",

@@ -1,0 +1,28 @@
+Cellspray — Invoice & Payment Tracker
+Buyer Usage Terms — Version 1.0
+
+Your purchase includes a downloadable copy of the Invoice & Payment Tracker.
+You may use and customize that copy for your own personal and business needs,
+including more than one business you own or operate. No per-business fee or
+subscription is required for this downloaded version. You may keep copies on
+your own devices and export your own records and invoices.
+
+You own and control the business information, logos, client information,
+invoices, payments, and backups you enter or create. You may share invoices
+and PDFs with clients. Cellspray is the software provider; your business is
+the invoice issuer.
+
+The purchase does not grant permission to resell, redistribute, publicly
+share, sublicense, or give away the Cellspray application, its original
+design, or the included guides as a competing product or template. Keep the
+download for your own use and your business's authorized users.
+
+This version runs locally in your browser. It does not include hosted
+accounts, cloud synchronization, payment processing, or automatic updates.
+Records are stored in browser storage rather than in the HTML application
+file. Keep regular JSON backups and export a backup before moving the file,
+changing browsers, or clearing browser data. See the included guides.
+
+Third-party open-source components retain their own licenses. These terms
+apply to Cellspray's original application and guides and do not restrict
+rights granted by the licenses in THIRD-PARTY-NOTICES.txt.
