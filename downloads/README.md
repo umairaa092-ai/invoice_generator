@@ -8,6 +8,8 @@ On GitHub, open the ZIP and select **Download raw file**. Upload that ZIP to you
 
 The buyer ZIP contains only five product files. It includes no developer dependencies, source checkout, credentials, or customer records. Sample data is fictional and clearly labeled.
 
+The included PDFs contain the live mobile-access link and phone shortcut instructions. Buyers can open the website in their phone browser; records remain local to that browser and do not automatically sync with the desktop download.
+
 Listing description, title, and tags: [seller draft](../docs/seller/ETSY-LISTING-DRAFT.md).
 
 [Download the Etsy seller kit](Cellspray-Etsy-Seller-Kit.zip) for three listing images, listing copy, and an upload checklist. Extract this kit and upload its PNGs as listing images; keep the buyer product ZIP as the digital file. The seller kit is for preparing your listing.

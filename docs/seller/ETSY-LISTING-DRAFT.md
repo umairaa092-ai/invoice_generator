@@ -4,13 +4,15 @@ Seller listing copy for the prepared buyer ZIP. Add your price, listing images, 
 
 ## Suggested title
 
-Cellspray Invoice & Payment Tracker | Offline Browser App for Freelancers | Custom Logo, Payments & Backups
+Cellspray Invoice & Payment Tracker | Desktop & Mobile Browser App | Custom Logo, Payments & Backups
 
 ## Description
 
 Bring your invoices, clients, and payments together in a practical workspace for freelancers, creatives, consultants, and small businesses.
 
-**Cellspray Invoice & Payment Tracker** is a downloadable browser app. Extract the ZIP and open the included HTML file in a modern desktop browser. No Node.js, terminal commands, Excel, Google Sheets, or cloud account is required. The app runs offline, with records stored locally in your browser.
+**Cellspray Invoice & Payment Tracker** is a browser app with a downloadable desktop copy and online phone access. Extract the ZIP and open the included HTML file in a modern desktop browser for offline use. On your phone, open the clickable website link in the included PDFs using Chrome on Android or Safari on iPhone. The hosted website needs internet when opening. No Node.js, terminal commands, Excel, Google Sheets, or cloud account is required. Both versions store records locally in your browser.
+
+Online app: [Open Cellspray Invoice & Payment Tracker](https://cellspray-invoice-payment-tracker.umair-aa092.workers.dev/).
 
 ### Make invoicing a single flow
 
@@ -37,8 +39,8 @@ Payments are recorded manually. You share the printed or saved invoice with your
 Your digital download ZIP includes:
 
 1. **Cellspray-Invoice-Payment-Tracker.html** — the standalone browser app.
-2. **START-HERE.pdf** — opening and first-use instructions.
-3. **USER-GUIDE.pdf** — invoices, payments, branding, and backups.
+2. **START-HERE.pdf** — desktop setup, clickable mobile access link, and first-use instructions.
+3. **USER-GUIDE.pdf** — desktop/phone workflows, invoices, payments, branding, and backups.
 4. **USAGE-TERMS.txt** — buyer usage terms.
 5. **THIRD-PARTY-NOTICES.txt** — open-source component licenses.
 
@@ -54,7 +56,11 @@ Each workspace uses one business identity. For multiple businesses, use separate
 
 Recommended: a current desktop version of **Chrome or Edge on Windows or Mac**, opened in a normal browser window.
 
+For phone access, open the online app in a normal **Chrome window on Android** or **Safari window on iPhone**. Add a Home Screen shortcut if you want an app icon. The shortcut opens the website; this version does not include offline installation on phones.
+
 Your records belong to the browser profile and device where you use the app. There is no cloud synchronization. Copying the HTML file alone does not copy your invoices, clients, or payments.
+
+The downloaded desktop file and the hosted website have separate browser workspaces. To move records to the phone or online version, download a JSON backup from the original workspace and restore it on the destination. Using the same website link on a second device does not automatically transfer its records.
 
 Keep the app in one folder and reopen it using the same browser profile. Storage for local HTML files can vary between browsers and after moving or renaming the app. Clearing browser data removes locally saved records; private browsing may discard them when its window closes.
 

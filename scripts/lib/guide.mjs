@@ -7,7 +7,8 @@ const escape = (value) =>
 const inline = (value) =>
   escape(value)
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-    .replace(/`(.+?)`/g, "<code>$1</code>");
+    .replace(/`(.+?)`/g, "<code>$1</code>")
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2">$1</a>');
 
 /** Render the headings, paragraphs, lists and tables used in our buyer guides. */
 export function guideHtml(markdown, icon, title) {
@@ -65,6 +66,6 @@ export function guideHtml(markdown, icon, title) {
   *{box-sizing:border-box}body{margin:0;color:#24283c;font-family:Arial,Helvetica,sans-serif;font-size:10.5pt;line-height:1.48}
   .brand{display:flex;gap:11px;align-items:center;border-bottom:2px solid #ab93f0;padding-bottom:12px;margin-bottom:20px}.brand svg{width:34px;height:34px}.brand-name{font-size:19pt;font-weight:700;letter-spacing:-.6px}.brand-subtitle{font-size:8.5pt;color:#677083}
   h1,h2,h3{color:#171a2b;line-height:1.23;break-after:avoid}h2{font-size:15pt;margin:23px 0 9px}h2:first-child{font-size:23pt;margin:0 0 16px;letter-spacing:-.5px}h3{font-size:11.5pt;margin:18px 0 7px}p{margin:0 0 10px;orphans:3;widows:3}ul,ol{margin:0 0 12px;padding-left:22px}li{padding-left:3px;margin:4px 0;break-inside:avoid}strong{font-weight:700}code{font-family:monospace;font-size:9pt;background:#f2eefb;padding:2px 3px}
-  table{border-collapse:collapse;width:100%;margin:10px 0 15px;font-size:9.5pt}th,td{border:1px solid #dce0e7;text-align:left;vertical-align:top;padding:8px}th{background:#f2eefb;color:#29243b}tr{break-inside:avoid}
+  a{color:#5940ab;text-decoration:underline;overflow-wrap:anywhere}table{border-collapse:collapse;width:100%;margin:10px 0 15px;font-size:9.5pt}th,td{border:1px solid #dce0e7;text-align:left;vertical-align:top;padding:8px}th{background:#f2eefb;color:#29243b}tr{break-inside:avoid}
   </style></head><body><header class="brand">${icon}<div><div class="brand-name">Cellspray</div><div class="brand-subtitle">Business Tools</div></div></header><main>${blocks.join("\n")}</main></body></html>`;
 }

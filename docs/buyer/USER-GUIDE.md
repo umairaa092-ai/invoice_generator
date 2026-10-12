@@ -6,7 +6,11 @@ Cellspray brings clients, invoices, payments, and balances into one local browse
 
 Your business is the invoice issuer. The business logo, name, contact information, and tagline you save identify your business on invoices. Cellspray remains the software brand in the application interface.
 
-## 1. Open the downloaded product
+## 1. Open on desktop or phone
+
+Use the downloaded HTML file for the offline desktop workflow, or use the hosted website for phone access. Both provide the same invoice and payment workspace, with records saved separately in the browser you use.
+
+### Desktop: download and extract
 
 Download the ZIP file and extract it before opening the tracker.
 
@@ -19,13 +23,39 @@ The intended workflow uses a current desktop version of **Chrome or Edge on Wind
 
 Use a normal browser window and the same browser profile each time. Keep the same filename and folder for day-to-day use. A different browser, profile, file location, or computer may open a separate local workspace.
 
-The layout adapts to smaller screens for responsive viewing. Opening and retaining downloaded HTML files on mobile depends on the device and browser; desktop use is the intended delivery workflow.
+### Phone: open the hosted website
+
+[Open the online tracker](https://cellspray-invoice-payment-tracker.umair-aa092.workers.dev/)
+
+Use a normal **Chrome window on Android** or **Safari window on iPhone**. Open the link directly in that browser rather than keeping it inside another app's link viewer.
+
+An internet connection is needed when opening or reloading the hosted website. Records remain local to your browser and device; the website does not synchronize them with your desktop.
+
+### Add a home-screen shortcut
+
+On **Android in Chrome**:
+
+1. Open the mobile link above.
+2. Open Chrome's menu and select **Add to Home screen**.
+3. Follow the shortcut prompts and confirm **Add**.
+
+On **iPhone in Safari**:
+
+1. Open the mobile link above.
+2. Tap **Share** and select **Add to Home Screen**.
+3. Confirm the shortcut name and tap **Add**.
+
+Menu wording and available options can vary by browser version. The shortcut opens the hosted website and still needs internet access when opening or reloading it. Use the downloaded HTML file on a desktop for the offline workflow.
 
 ## 2. Understand where your records live
 
-The tracker saves records in local browser storage on your device. It does not require an account, and there is no cloud synchronization between browsers or computers.
+The tracker saves records in local browser storage on your device. It does not require an account, and there is no cloud synchronization between browsers, phones, or computers.
 
-Your saved workspace includes clients, invoices, payments, business settings, branding, and theme choice. Reloading the same file in the same browser normally returns to that workspace when browser storage remains available.
+Your saved workspace includes clients, invoices, payments, business settings, branding, and theme choice. Reloading the same file or website in the same browser and profile normally returns to that workspace when browser storage remains available.
+
+The downloaded desktop HTML file and the hosted website have separate storage locations. Different browsers, profiles, devices, or website addresses also have separate workspaces. Use a JSON backup and restore to transfer records between them.
+
+On some phones, a home-screen shortcut can use a separate browser storage context. If the shortcut opens a fresh workspace, return to the original browser, download a JSON backup, and restore it in the shortcut's workspace.
 
 Keep a JSON backup because browser storage can be cleared or restricted. Private or incognito sessions may discard records when the session closes. Browser cleanup tools, browser-data deletion, and changing profiles or file locations can also make records unavailable.
 
@@ -88,7 +118,7 @@ Currency, tax, terms, and payment instructions are defaults for future invoices.
 
 ### Using the app for more than one business
 
-Each workspace has one business identity. If you operate multiple businesses, use a separate normal browser profile for each business and keep a separate set of JSON backups for each workspace. Changing the name, logo, or contact details in one workspace also changes the identity used on its existing invoice previews and prints; it does not create a separate business or preserve a previous invoice issuer. Keep each business's records and branding in its own workspace.
+Each workspace has one business identity. If you operate multiple businesses, use separate normal browser profiles where available, or separate browsers/devices, and keep a separate set of JSON backups for each workspace. Changing the name, logo, or contact details in one workspace also changes the identity used on its existing invoice previews and prints; it does not create a separate business or preserve a previous invoice issuer. Keep each business's records and branding in its own workspace.
 
 ## 5. Create an invoice in one visit
 
@@ -184,7 +214,9 @@ Amounts in different currencies stay separate. There is no exchange-rate convers
 
 In **Invoices**, select the invoice’s **Print** action. Review the document, then select **Print / Save as PDF**.
 
-In the browser print dialog, choose **Save as PDF** or your preferred printer. Review the page preview and save or print. If browser-added headers or footers are unwanted, turn them off in the print options.
+On desktop, choose **Save as PDF** or your preferred printer in the browser print dialog. Review the page preview and save or print. If browser-added headers or footers are unwanted, turn them off in the print options.
+
+Phone printing and PDF-sharing menus vary by browser and device. Use the available system print or sharing options. If your phone does not offer the PDF-saving option you need, transfer a JSON backup to the desktop tracker and use the desktop print workflow.
 
 The document uses your business logo, name, tagline, contact details, and invoice accent. Customer invoices omit the Cellspray software identity. Send the PDF to your client yourself; the tracker does not send email.
 
@@ -215,6 +247,8 @@ Undo removes changes made after that restore. Download a backup of those changes
 
 ## 12. Move the tracker or use an updated copy
 
+### Move or update the downloaded desktop file
+
 1. Open the current tracker in the browser and profile where your records are saved.
 2. Select **Backup & restore → Download backup**.
 3. Keep the original HTML file and exported JSON file until you have checked the new workspace.
@@ -224,6 +258,17 @@ Undo removes changes made after that restore. Download a backup of those changes
 7. Download a new backup after confirming the transfer.
 
 Copying the HTML file alone does not move browser-stored records. The JSON backup carries the saved workspace.
+
+### Transfer records between desktop and phone
+
+1. In the workspace containing your records, select **Backup & restore → Download backup**.
+2. Transfer the JSON file to the other device using your preferred file-transfer method.
+3. On the phone, open the hosted link in section 1. On the desktop, open your downloaded HTML file.
+4. In the destination workspace, open **Backup & restore** and choose the transferred JSON file.
+5. Use **Replace** for a complete transfer into a fresh workspace, including one that only contains sample data. Use **Merge** if the destination has records you want to keep. Review the confirmation before applying it.
+6. Check the clients, invoices, payments, balances, and branding, then download a new backup.
+
+Transfers are manual. Later changes on one device do not update the other device automatically.
 
 ## 13. Appearance and everyday habits
 
@@ -241,7 +286,13 @@ Extract the ZIP first. Right-click **Cellspray-Invoice-Payment-Tracker.html**, c
 
 ### My records appear to be missing
 
-Try the original HTML filename and folder, browser, and browser profile. Confirm you are in a normal window. If the browser data was cleared or the original workspace is unavailable, use your latest JSON backup to restore the records.
+On desktop, try the original HTML filename and folder, browser, and browser profile. On phone, check that you opened the same website address in the same browser or home-screen shortcut. Confirm you are in a normal window. If the browser data was cleared or the original workspace is unavailable, use your latest JSON backup to restore the records.
+
+### The mobile website does not open
+
+Check your internet connection and reopen the link in section 1 directly in a current Chrome browser on Android or Safari on iPhone, using a normal browsing session. If an embedded PDF or chat browser fails, copy the link and paste it into the browser's address bar. A home-screen shortcut opens the online website. The downloaded desktop HTML file remains the offline option.
+
+If access still fails, share the visible error text with the seller. Preserve a JSON backup before clearing any browser data; your saved records are local.
 
 ### A logo upload fails
 
