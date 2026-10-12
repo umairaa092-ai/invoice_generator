@@ -9,8 +9,8 @@ import type {
 } from "./types";
 
 export const defaultSettings: Settings = {
-  businessName: "Northline Studio",
-  email: "hello@northline.example",
+  businessName: "Your Business",
+  email: "",
   phone: "",
   address: "",
   currency: "USD",
@@ -40,6 +40,8 @@ export function demoWorkspace(): Workspace {
   const current = today();
   workspace.settings = {
     ...workspace.settings,
+    businessName: "Northline Studio",
+    email: "hello@northline.example",
     phone: "+1 (415) 555-0142",
     address: "125 Market Street, Suite 400\nSan Francisco, CA 94103",
   };

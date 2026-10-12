@@ -109,7 +109,7 @@ export default function Backup() {
         mode === "merge" ? "Merge this backup?" : "Replace your workspace?",
       message:
         mode === "merge"
-          ? "Current records will remain. Missing backup records will be added, and newer records take priority when IDs match. Your current workspace will be saved so you can undo this restore."
+          ? "Current records will remain. Missing backup records will be added, and newer records take priority when IDs match. Current branding stays; backup branding can fill empty fields. Your current workspace will be saved so you can undo this restore."
           : `This will replace your current ${data.clients.length} clients, ${data.invoices.length} invoices, and ${data.payments.length} payments with the backup, including its business settings. A rollback snapshot will be saved so you can undo this restore.`,
       confirmLabel: mode === "merge" ? "Merge backup" : "Replace workspace",
       onConfirm: () => {
@@ -303,7 +303,8 @@ export default function Backup() {
                 <p>
                   Keep your current records and add missing records from the
                   backup. Newer records take priority when IDs match. Your
-                  current business settings stay.
+                  current business settings stay. Backup branding can fill
+                  currently empty branding fields.
                 </p>
               </div>
             </label>

@@ -4467,6 +4467,457 @@ fieldset.restore-options {
     bottom: auto;
   }
 }
+/* Business branding stays scoped to business identity and customer invoices. */
+svg.brand-mark {
+  display: block;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  padding: 0;
+  background: transparent;
+  overflow: visible;
+}
+.business-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.business-logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.business-logo .initials {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  font-weight: 550;
+  letter-spacing: -0.4px;
+}
+.business-logo-initials {
+  font-weight: 550;
+  letter-spacing: -0.4px;
+}
+.workspace-business-logo {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: var(--workspace-surface, #393547);
+  border: 1px solid #50465f;
+  color: var(--workspace-accent, #d4c1fc);
+  font-size: 12px;
+}
+.workspace-business-logo img {
+  padding: 3px;
+}
+.workspace-card .workspace-meta {
+  flex: 1;
+}
+.branding-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 20px;
+  padding: 0 23px 24px;
+  align-items: stretch;
+}
+.branding-upload,
+.branding-preview-card {
+  min-width: 0;
+}
+.logo-dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 23px 15px;
+  min-height: 182px;
+  text-align: center;
+  border: 1px dashed var(--line-strong);
+  border-radius: 9px;
+  background: var(--surface-subtle);
+  color: var(--secondary);
+  transition:
+    border-color 0.15s,
+    background 0.15s;
+}
+.logo-dropzone.drag-active,
+.logo-dropzone:focus-within {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+.logo-dropzone > strong {
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 550;
+}
+.logo-dropzone > span:not(.logo-upload-icon) {
+  font-size: 11px;
+  color: var(--muted);
+}
+.logo-upload-icon {
+  display: grid;
+  place-items: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 9px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  margin-bottom: 3px;
+}
+.logo-upload-icon svg {
+  width: 19px;
+  height: 19px;
+}
+.logo-upload-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 5px;
+}
+.logo-upload-actions .btn {
+  font-size: 11px;
+  min-height: 33px;
+  padding: 8px 11px;
+}
+.logo-upload-help,
+.logo-file-status {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.6;
+}
+.logo-file-status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 9px;
+  overflow-wrap: anywhere;
+}
+.logo-file-status svg {
+  width: 13px;
+  height: 13px;
+  color: var(--green);
+}
+.branding-preview-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 17px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--surface);
+  text-align: center;
+}
+.branding-preview-label {
+  width: 100%;
+  text-align: left;
+  font-size: 9px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 19px;
+}
+.branding-preview-identity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
+  width: 100%;
+}
+.branding-preview-logo {
+  width: 128px;
+  height: 64px;
+  max-width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background-color: var(--surface-subtle);
+  background-image: repeating-conic-gradient(
+    var(--surface-hover) 0% 25%,
+    transparent 0% 50%
+  );
+  background-size: 12px 12px;
+  color: var(--accent);
+  margin-bottom: 5px;
+}
+.branding-preview-logo img {
+  padding: 7px;
+}
+.branding-preview-logo .initials {
+  background: var(--accent-soft);
+  font-size: 25px;
+}
+.branding-preview-logo.business-logo-initials {
+  background: var(--accent-soft);
+  font-size: 25px;
+}
+.branding-preview-name {
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 550;
+  letter-spacing: -0.2px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.branding-preview-tagline {
+  font-size: 11px;
+  color: var(--secondary);
+  line-height: 1.6;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  margin-top: 4px;
+}
+.branding-preview-caption {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.6;
+  margin-top: 18px;
+}
+.branding-preview-accent {
+  width: 42px;
+  height: 3px;
+  border-radius: 2px;
+  margin-top: 15px;
+}
+.branding-fields {
+  padding: 0 23px 23px;
+}
+.branding-fields .form-grid {
+  padding: 0;
+}
+.invoice-accent-field {
+  min-width: 0;
+  margin: 0;
+  border: 0;
+  padding: 0 23px 24px;
+}
+.invoice-accent-field legend {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--secondary);
+  padding: 0;
+  margin-bottom: 4px;
+}
+.accent-presets {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+.accent-swatch {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 7px;
+  min-height: 36px;
+  padding: 8px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--secondary);
+  font-size: 11px;
+  text-align: left;
+}
+.accent-swatch:hover {
+  background: var(--surface-hover);
+}
+.accent-swatch.selected {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+.accent-swatch i {
+  display: block;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  border: 1px solid #ffffff35;
+  border-radius: 50%;
+}
+.accent-swatch > svg {
+  width: 12px;
+  height: 12px;
+  margin-left: auto;
+  color: var(--accent);
+}
+.accent-custom {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 15px;
+  margin-top: 18px;
+}
+.accent-custom input[type="color"] {
+  display: block;
+  width: 39px;
+  height: 37px;
+  min-height: 37px;
+  padding: 4px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  border-radius: 6px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.accent-custom input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+.accent-custom input[type="color"]::-webkit-color-swatch {
+  border: 0;
+  border-radius: 3px;
+}
+.accent-custom input[type="color"]::-moz-color-swatch {
+  border: 0;
+  border-radius: 3px;
+}
+.accent-custom .field:last-child input {
+  max-width: 125px;
+  font-variant-numeric: tabular-nums;
+}
+.branding-hint {
+  font-size: 10px;
+  line-height: 1.7;
+  color: var(--muted);
+  margin-top: 9px;
+}
+.branding-reset {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  border-top: 1px solid var(--line);
+  padding: 15px 23px;
+  background: var(--surface-subtle);
+}
+.branding-reset .branding-hint {
+  margin-top: 0;
+  max-width: 390px;
+}
+.branding-reset .btn {
+  flex-shrink: 0;
+}
+.invoice-preview {
+  --invoice-ink: var(--invoice-ink-light, var(--accent));
+  --invoice-surface: var(--invoice-surface-light, var(--accent-soft));
+}
+:root[data-theme="dark"] .invoice-preview {
+  --invoice-ink: var(--invoice-ink-dark, var(--accent));
+  --invoice-surface: var(--invoice-surface-dark, var(--accent-soft));
+}
+.invoice-preview .preview-header {
+  border-bottom-color: var(--invoice-accent, var(--accent));
+}
+.invoice-preview .preview-title {
+  color: var(--invoice-ink);
+  flex-shrink: 0;
+}
+.invoice-preview .preview-brand {
+  flex: 1;
+  max-width: calc(100% - 110px);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 9px;
+}
+.invoice-preview .preview-brand > div {
+  min-width: 0;
+  width: 100%;
+}
+.invoice-preview .preview-brand > div > span {
+  display: block;
+  overflow-wrap: anywhere;
+}
+.invoice-preview .preview-brand strong {
+  overflow-wrap: anywhere;
+}
+.invoice-business-logo {
+  width: 120px;
+  height: 50px;
+  max-width: 100%;
+}
+.invoice-business-logo img {
+  object-position: left center;
+}
+.invoice-preview .preview-business-tagline {
+  display: block;
+  font-size: 9px;
+  color: var(--secondary);
+  line-height: 1.6;
+  margin-top: 4px;
+  overflow-wrap: anywhere;
+}
+.invoice-preview .preview-totals .preview-total {
+  color: var(--invoice-ink);
+  background: var(--invoice-surface);
+}
+.invoice-preview .preview-totals > div:last-child > strong:last-child {
+  color: var(--invoice-ink);
+}
+@media (max-width: 1250px) and (min-width: 1061px) {
+  .branding-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .branding-preview-card {
+    min-height: 205px;
+  }
+}
+@media (max-width: 700px) {
+  .branding-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+  .branding-preview-card {
+    min-height: 212px;
+  }
+}
+@media (max-width: 600px) {
+  .branding-grid {
+    padding: 0 17px 20px;
+  }
+  .branding-fields {
+    padding: 0 17px 20px;
+  }
+  .invoice-accent-field {
+    padding: 0 17px 20px;
+  }
+  .branding-reset {
+    padding: 15px 17px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .branding-reset .btn {
+    width: 100%;
+  }
+  .logo-dropzone {
+    padding: 24px 12px;
+    min-height: 190px;
+  }
+  .accent-presets {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .accent-swatch {
+    padding: 10px;
+    min-height: 40px;
+  }
+  .accent-custom input[type="color"] {
+    width: 42px;
+    height: 40px;
+  }
+  .invoice-preview .preview-brand {
+    max-width: calc(100% - 95px);
+  }
+  .invoice-business-logo {
+    width: 110px;
+    height: 46px;
+  }
+}
 @media print {
   @page {
     size: A4;
@@ -4550,6 +5001,20 @@ fieldset.restore-options {
   }
   #print-root .preview-brand strong {
     font-size: 20px;
+  }
+  #print-root .invoice-preview {
+    --invoice-ink: var(--invoice-ink-light, #7560db);
+    --invoice-surface: var(--invoice-surface-light, #f0ecfd);
+  }
+  #print-root .preview-brand {
+    max-width: calc(100% - 165px);
+  }
+  #print-root .invoice-business-logo {
+    width: 160px;
+    height: 70px;
+  }
+  #print-root .preview-business-tagline {
+    font-size: 11px;
   }
   #print-root .preview-brand p,
   #print-root .preview-meta,

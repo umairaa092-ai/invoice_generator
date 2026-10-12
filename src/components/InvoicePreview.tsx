@@ -1,4 +1,7 @@
 import type { Client, Invoice, Settings, Payment } from "../lib/types";
+import type { CSSProperties } from "react";
+import { BusinessLogo } from "./BusinessLogo";
+import { brandingColors } from "../lib/branding";
 import {
   dateLabel,
   money,
@@ -19,15 +22,35 @@ export function InvoicePreview({
 }) {
   const sum = totals(invoice),
     summary = invoiceSummary(invoice, payments);
+  const colors = brandingColors(settings.invoiceAccentColor);
+  const invoiceStyle = {
+    "--invoice-accent": colors.accent,
+    "--invoice-ink-light": colors.lightInk,
+    "--invoice-ink-dark": colors.darkInk,
+    "--invoice-surface-light": colors.lightSurface,
+    "--invoice-surface-dark": colors.darkSurface,
+  } as CSSProperties;
   return (
-    <article className="invoice-preview" aria-label="Invoice preview">
+    <article
+      className="invoice-preview"
+      aria-label="Invoice preview"
+      style={invoiceStyle}
+    >
       <div className="preview-header">
         <div className="preview-brand">
-          <span className="preview-brand-mark">
-            {settings.businessName.trim().slice(0, 1) || "B"}
-          </span>
+          <BusinessLogo
+            logo={settings.businessLogo}
+            name={settings.businessName}
+            className="invoice-business-logo"
+            initials={false}
+          />
           <div>
-            <strong>{settings.businessName || "Your business"}</strong>
+            <strong>{settings.businessName.trim() || "Your Business"}</strong>
+            {settings.businessTagline?.trim() && (
+              <span className="preview-business-tagline">
+                {settings.businessTagline}
+              </span>
+            )}
             <span>{settings.email}</span>
           </div>
         </div>
@@ -43,7 +66,7 @@ export function InvoicePreview({
       <div className="preview-billing">
         <div>
           <small>FROM</small>
-          <strong>{settings.businessName || "Your business"}</strong>
+          <strong>{settings.businessName.trim() || "Your Business"}</strong>
           <p>{settings.address}</p>
           <p>{settings.phone}</p>
         </div>
@@ -112,7 +135,7 @@ export function InvoicePreview({
               <span>Payments received</span>
               <span>−{money(summary.paid, invoice.currency)}</span>
             </div>
-            <div>
+            <div className="preview-balance">
               <strong>Balance due</strong>
               <strong>{money(summary.balance, invoice.currency)}</strong>
             </div>
@@ -125,7 +148,6 @@ export function InvoicePreview({
       </div>
       <div className="preview-footer">
         Thank you for choosing {settings.businessName || "us"}.
-        <span>Made with Billora</span>
       </div>
     </article>
   );

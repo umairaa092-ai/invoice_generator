@@ -32,7 +32,7 @@ function mergeRecords<T extends { id: string; updatedAt: string }>(
   return [...records.values()];
 }
 
-/** Current settings survive merges. Conflicting relationships fail safely instead of losing records. */
+/** Current settings survive merges; backup branding can fill fields that are still empty. */
 export function mergeWorkspace(
   current: Workspace,
   incoming: Workspace,
@@ -46,6 +46,18 @@ export function mergeWorkspace(
     payments: mergeRecords(current.payments, incoming.payments),
     settings: { ...current.settings },
   };
+  for (const field of [
+    "businessName",
+    "businessLogo",
+    "businessTagline",
+    "invoiceAccentColor",
+  ] as const) {
+    const existing = current.settings[field];
+    const imported = incoming.settings[field];
+    if (!existing?.trim() && imported?.trim()) {
+      merged.settings[field] = imported;
+    }
+  }
   try {
     validateWorkspace(merged);
   } catch (error) {

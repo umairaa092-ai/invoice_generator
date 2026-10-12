@@ -49,6 +49,10 @@ export interface Payment {
 
 export interface Settings {
   businessName: string;
+  /** Optional to preserve version-1 workspaces created before business branding. */
+  businessLogo?: string;
+  businessTagline?: string;
+  invoiceAccentColor?: string;
   email: string;
   phone: string;
   address: string;

@@ -1,4 +1,5 @@
 import { currencies, roundMoney, totals } from "./calculations";
+import { isSafeBusinessLogo } from "./branding";
 import type {
   Client,
   Currency,
@@ -173,7 +174,29 @@ export function validatePayment(value: unknown): asserts value is Payment {
 
 export function validateSettings(value: unknown): asserts value is Settings {
   object(value, "Business settings");
-  string(value.businessName, "Business name", true);
+  string(value.businessName, "Business name");
+  if (value.businessLogo !== undefined) {
+    string(value.businessLogo, "Business logo");
+    assert(
+      isSafeBusinessLogo(value.businessLogo),
+      "Business logo must be a processed PNG, JPEG, or WEBP image under 1 MB.",
+    );
+  }
+  if (value.businessTagline !== undefined) {
+    string(value.businessTagline, "Business tagline");
+    assert(
+      value.businessTagline.length <= 160,
+      "Business tagline must be 160 characters or fewer.",
+    );
+  }
+  if (value.invoiceAccentColor !== undefined) {
+    string(value.invoiceAccentColor, "Invoice accent color");
+    assert(
+      value.invoiceAccentColor === "" ||
+        /^#[\da-f]{6}$/i.test(value.invoiceAccentColor),
+      "Invoice accent color must be a six-digit hex color, such as #7560db.",
+    );
+  }
   string(value.email, "Business email");
   string(value.phone, "Business phone");
   string(value.address, "Business address");

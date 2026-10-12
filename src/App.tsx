@@ -21,6 +21,8 @@ import {
 import { WorkspaceProvider, useWorkspace, type Page } from "./Workspace";
 import type { Currency, Invoice } from "./lib/types";
 import { currencies } from "./lib/calculations";
+import { brandingColors } from "./lib/branding";
+import type { CSSProperties } from "react";
 import Dashboard from "./pages/Dashboard";
 import Invoices from "./pages/Invoices";
 import Clients from "./pages/Clients";
@@ -31,6 +33,8 @@ import { InvoiceEditor } from "./pages/InvoiceEditor";
 import { PaymentEditor } from "./components/PaymentEditor";
 import { InvoicePreview } from "./components/InvoicePreview";
 import { Modal } from "./components/Modal";
+import { BilloraMark } from "./components/BilloraMark";
+import { BusinessLogo } from "./components/BusinessLogo";
 const navigation = [
   { id: "dashboard" as Page, label: "Overview", icon: LayoutDashboard },
   { id: "invoices" as Page, label: "Invoices", icon: FileText },
@@ -84,6 +88,7 @@ function Shell({
   const [mobileOpen, setMobileOpen] = useState(false),
     [currency, setCurrency] = useState<Currency>(data.settings.currency);
   const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 850);
+  const workspaceBrand = brandingColors(data.settings.invoiceAccentColor);
   useEffect(() => {
     const query = window.matchMedia("(max-width: 850px)");
     const change = () => setIsMobile(query.matches);
@@ -163,9 +168,7 @@ function Shell({
             navigate("dashboard");
           }}
         >
-          <span className="brand-mark">
-            b<span>•</span>
-          </span>
+          <BilloraMark className="brand-mark" />
           <span className="brand-name">
             billora
             <span className="brand-tagline">A little less busywork.</span>
@@ -241,18 +244,24 @@ function Shell({
           </div>
           <button
             className="workspace-card"
+            style={
+              {
+                "--workspace-accent": workspaceBrand.darkInk,
+                "--workspace-surface": workspaceBrand.darkSurface,
+              } as CSSProperties
+            }
             onClick={() => navigate("settings")}
           >
-            <span className="workspace-avatar">
-              {data.settings.businessName
-                .split(" ")
-                .map((s) => s[0])
-                .slice(0, 2)
-                .join("") || "YO"}
-            </span>
+            <BusinessLogo
+              logo={data.settings.businessLogo}
+              name={data.settings.businessName}
+              className="workspace-business-logo"
+            />
             <span className="workspace-meta">
-              <strong>{data.settings.businessName || "Your business"}</strong>
-              <span>{demo ? "Demo workspace" : "Personal workspace"}</span>
+              <strong>
+                {data.settings.businessName.trim() || "Your Business"}
+              </strong>
+              <span>{demo ? "Demo workspace" : "Business workspace"}</span>
             </span>
             <ChevronDown size={15} />
           </button>

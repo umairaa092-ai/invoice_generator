@@ -2,12 +2,14 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Building2, Check, Info, Palette, Save } from "lucide-react";
 import { useWorkspace } from "../Workspace";
 import { Field } from "../components/Field";
+import { BusinessBranding } from "../components/BusinessBranding";
 import { currencies } from "../lib/calculations";
 import type { Settings as BusinessSettings } from "../lib/types";
 
 export default function Settings() {
   const { data, commit, toast } = useWorkspace();
   const [form, setForm] = useState<BusinessSettings>(data.settings);
+  const [logoProcessing, setLogoProcessing] = useState(false);
   const previousSettings = useRef(data.settings);
   useEffect(() => {
     // Changing the header theme should not discard a business form in progress.
@@ -26,6 +28,8 @@ export default function Settings() {
   const dirty = JSON.stringify(form) !== JSON.stringify(data.settings);
   function save(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (logoProcessing)
+      return toast("Wait for your logo to finish processing.", "error");
     if (!form.businessName.trim())
       return toast("Enter your business name.", "error");
     if (!form.invoicePrefix.trim())
@@ -51,6 +55,9 @@ export default function Settings() {
         settings: {
           ...form,
           businessName: form.businessName.trim(),
+          ...(form.businessTagline !== undefined
+            ? { businessTagline: form.businessTagline.trim() }
+            : {}),
           email: form.email.trim(),
           phone: form.phone.trim(),
           address: form.address.trim(),
@@ -76,6 +83,13 @@ export default function Settings() {
       </div>
       <form onSubmit={save} className="settings-layout">
         <div className="settings-main">
+          <BusinessBranding
+            settings={form}
+            onChange={(changes) =>
+              setForm((current) => ({ ...current, ...changes }))
+            }
+            onProcessingChange={setLogoProcessing}
+          />
           <section className="panel settings-panel">
             <div className="panel-heading">
               <span className="section-icon">
@@ -90,17 +104,6 @@ export default function Settings() {
               </div>
             </div>
             <div className="form-grid">
-              <Field label="Business name">
-                <input
-                  required
-                  maxLength={160}
-                  value={form.businessName}
-                  placeholder="Your business or full name"
-                  onChange={(event) =>
-                    setForm({ ...form, businessName: event.target.value })
-                  }
-                />
-              </Field>
               <Field label="Email">
                 <input
                   type="email"
@@ -263,12 +266,16 @@ export default function Settings() {
             <button
               className="btn btn-secondary"
               type="button"
-              disabled={!dirty}
+              disabled={!dirty || logoProcessing}
               onClick={() => setForm(data.settings)}
             >
               Discard changes
             </button>
-            <button className="btn btn-primary" type="submit" disabled={!dirty}>
+            <button
+              className="btn btn-primary"
+              type="submit"
+              disabled={!dirty || logoProcessing}
+            >
               <Save size={17} />
               Save settings
             </button>

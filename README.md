@@ -41,6 +41,16 @@ Approval records the package and version; rebuilding then runs its installer. Th
 
 Use the invoice table to edit, duplicate, print, record later payments, or delete invoices. Duplicates receive a fresh invoice number and do not copy payments. Browser **Print / Save as PDF** produces a clean invoice document. Share the exported PDF yourself; this version does not send email or process payments.
 
+## Business branding
+
+In **Business settings → Business Branding**, choose or drag in your business logo, enter your business name and optional tagline, and choose an invoice accent. Six presets and a custom six-digit hex color are available. Select **Save settings** once to apply branding to the workspace identity, live invoice previews, and printed invoices. Billora keeps its own app mark and interface colors; customer invoices contain only your business identity.
+
+PNG, JPEG, and WEBP uploads are limited to 2 MiB. The browser validates the actual image format and dimensions, decodes it, and creates a compressed static PNG fitting within **600 × 300 pixels** without upscaling or stretching. Transparency is preserved. Only this processed data URL is saved, with a 1 MiB text limit; the source image is discarded. Extremely large dimensions (over 40 megapixels or 16,384 pixels on either side) are rejected before decoding to protect browser memory. All processing happens on your device.
+
+Change or remove the logo from this section. **Reset branding** clears the logo and tagline and restores the default invoice accent while keeping the business name and contact details. Save settings to apply a removal or reset. Settings and sidebar previews use initials if there is no usable logo; customer invoices show the business name with no empty logo placeholder. Accent text automatically adjusts for accessible contrast in light, dark, and print views.
+
+The optional settings fields are `businessLogo`, `businessTagline`, and `invoiceAccentColor`. Existing version-1 workspaces and backups without them keep their original structure and load normally; display defaults do not silently rewrite stored data. Branding is saved with the existing workspace and JSON backup. **Merge** preserves each populated current branding field and fills empty fields from the backup; other current settings remain. **Replace** restores the backup's branding exactly, including absent fields in older backups. **Undo last restore** also restores the previous branding. Business branding is used when previewing and printing both existing and new invoices, and does not change invoice amounts or payment calculations.
+
 ## Financial rules
 
 - Line amounts round to cents. The fixed-amount discount is deducted before percentage tax; totals round to cents.
@@ -60,7 +70,7 @@ The workspace uses the `billora.workspace.v1` key and a versioned JSON schema. G
 
 **Backup & restore** lets you download a JSON backup and inspect an uploaded file before changing any data:
 
-- **Merge** is the default. Current records remain, missing records are added, and the record with the newer `updatedAt` wins for matching IDs. Current records win ties. Current business settings stay. A merge that would cause duplicate invoice numbers, broken relationships, or overpayments is rejected with an explanation.
+- **Merge** is the default. Current records remain, missing records are added, and the record with the newer `updatedAt` wins for matching IDs. Current records win ties. Current business settings stay, with empty branding fields filled from the backup. A merge that would cause duplicate invoice numbers, broken relationships, or overpayments is rejected with an explanation.
 - **Replace** explicitly replaces all workspace records and business settings after confirmation.
 - A rollback snapshot is saved before either operation. **Undo last restore** returns to that snapshot, including after reloading. Changes made after the restore are removed when undoing, so export them first if needed.
 - Malformed files, unsupported versions, invalid values, duplicate IDs/numbers, and missing relationships are rejected without changing the workspace. Files are limited to 10 MB.
@@ -93,6 +103,8 @@ npm run test:e2e
 Unit tests cover monetary rounding, tax/discount calculations, statuses, the payment lifecycle, currency isolation, numbering, backup validation, safe merges, and storage errors.
 
 Browser tests exercise inline client creation and deposits, later partial/final payments, deletion rollback, backup download/merge/undo, newer-record preservation, dark mode persistence, mobile layout, print visibility, linked-record deletions, invalid input, malformed backups, and storage recovery.
+
+Branding tests also cover real raster uploads and transparency, processing errors, resizing, removal/reset, legacy storage compatibility, contrast, logo persistence, invoice/sidebar/print identity, and branding behavior across all restore modes.
 
 The cloud test configuration uses `/usr/bin/chromium`. Elsewhere, set `CHROMIUM_PATH` to your installed Chromium/Chrome binary. Playwright starts Vite automatically, or reuses a development server already running on port 5173. Unit tests do not require a browser.
 
